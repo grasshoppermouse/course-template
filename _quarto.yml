@@ -1,0 +1,18 @@
+project:
+  type: website
+
+website:
+  title: "Anthropology XYZ"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Syllabus
+      - slides.qmd
+      - zoomrecordings.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-location: left

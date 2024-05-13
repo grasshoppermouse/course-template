@@ -1,0 +1,147 @@
+---
+title: "Syllabus"
+params:
+  instructor: "Ed Hagen"
+  email: "edhagen@wsu.edu"
+  time: "Tu/Th 9:10 - 10:25 am"
+  credits: "4"
+  room: "VLIB 261"
+  times: "Tu/Thu 9:10-10:25am"
+  officehours: "Anytime over zoom"
+  website: http://anthro.vancouver.wsu.edu/faculty/hagen
+  firstday: "2024-01-08" # Monday start of classes
+  thanksgiving: # Monday start of Thanksgiving Break
+  springbreak: "2024-03-11" # Monday start of Spring Break
+  midterm1: 7 # Week of the midterm
+  midterm2:
+  final: "Thursday, May 2, 2024, 8 am - 10 am"
+engine: knitr
+---
+
+```{r setup, include=F}
+
+# Compute weeks and remove thanksgiving or spring break
+weeks <- seq.Date(as.Date(params$firstday), length.out = 16, by="7 days")
+weekbreak <- NULL
+if (!is.null(params$thanksgiving)) {
+  weekbreak <- which(weeks == params$thanksgiving)
+} else if (!is.null(params$springbreak)){
+  weekbreak <- which(weeks == params$springbreak)
+}
+if (!is.null(weekbreak)){
+  weekbreak <- which(weeks == params$springbreak)
+  course_weeks <- weeks[-weekbreak] # Remove thanksgiving or spring break
+} 
+
+
+# Format weeks and test dates
+weekdates <- format.Date(course_weeks, "%b %e") # "%B %d, %Y"
+midterm1 <- format.Date(course_weeks[params$midterm1] + 3, "%A, %B %d, %Y") # Thurs
+# midterm2 <- format.Date(course_weeks[params$midterm2] + 3, "%A, %B %d, %Y") # Thurs
+```
+
+# Course details
+
+* Instructor: `r params$instructor`
+* Email: [`r params$email`](mailto:`r params$email`)
+* Office hours: `r params$officehours`
+* Course website: [`r params$website`](`r params$website`)
+* Lecture hall: `r params$room`
+* Days and times: `r params$times`
+* Credits: `r params$credits`
+
+# Course description
+
+Anthropology XYZ ipsum dolor sit amet, ac, nostra, sagittis luctus penatibus, nibh amet. Mattis aliquet euismod leo, duis sed erat feugiat luctus in sed a. In, purus nam ligula, sit sed consectetur a rutrum sed, rhoncus viverra nunc cum facilisis consectetur. Aenean mollis lorem cursus fames fames mauris id. Dignissim, justo pharetra tortor lectus pretium vestibulum integer. Aptent nisl risus tortor aliquam, ac rhoncus in vestibulum odio bibendum. Justo sem egestas feugiat cum et mauris non porttitor, malesuada in, metus lorem etiam. Mollis justo eget nisl, sit mollis, lobortis. Cursus convallis tristique efficitur viverra dui metus, interdum eu. Ridiculus penatibus, amet in ut ante aliquam, tincidunt ultrices sed. Accumsan donec lorem. Luctus et in ipsum magna porta. Magna et ac scelerisque mi duis eu et, eleifend et. Justo egestas aliquam inceptos.
+
+# Textbooks and readings
+
+* How Humans Evolved, latest edition. Boyd and Silk. Available at the Bookie.
+* Lab materials posted online.
+
+# Grading
+
+Students are responsible for all material in the lectures and the assigned portions of the texts. Grading will be on a curve, and will be based on two tests, plus your laboratory grade:
+
+* Midterm (25 multiple choice & true/false questions): 30% of grade
+* Final   (50 multiple choice & true/false questions): 40% of grade
+* Laboratory (two reports): 30%
+
+You are responsible for assigned reading even when the material is not covered in lecture. The final exam is comprehensive (i.e., it covers material from the entire course).
+
+# Test policy
+
+Exams cannot be rescheduled on an individual basis. Makeup exams only available for students with a medical or similar excuse. Do not schedule trips or otherwise plan to be absent during the midterms or finals week!
+
+# Assigned reading and test dates
+
+* Midterm 1: `r midterm1`
+* Final: `r params$final`
+
+## Week 1 (`{r} weekdates[1]`): Adaptation and natural selection
+
+* Boyd and Silk: Ch. 1
+
+## Week 2 (`{r} weekdates[2]`): Genetics
+
+* Boyd and Silk: Ch. 2
+
+## Week 3 (`{r} weekdates[3]`): The modern synthesis
+
+* Boyd and Silk: Ch. 3
+
+## Week 4 (`{r} weekdates[4]`): Speciation and phylogeny
+
+* Boyd and Silk: Ch. 4
+
+## Week 5 (`{r} weekdates[5]`): The Primates
+
+* Boyd and Silk: Ch. 9
+
+## Week 6 (`{r} weekdates[6]`): Primate ecology
+
+* Boyd and Silk: Ch. 5
+
+## Week 7 (`{r} weekdates[7]`): Primate mating systems
+
+* Boyd and Silk: Ch. 6
+
+## **MIDTERM: `{r} midterm1`**
+
+The midterm consists of 25 multiple choice and true/false questions on all readings and Weeks through week 5.
+
+## Week 8 (`{r} weekdates[8]`): The evolution of social behavior
+
+* Boyd and Silk: Ch. 7
+
+## Week 9 (`{r} weekdates[9]`): Primate life histories and the evolution of intelligence
+
+* Boyd and Silk: Ch. 8
+
+## Week 10 (`{r} weekdates[10]`): Hominins
+
+* Boyd and Silk: Ch. 10
+
+## Week 11 (`{r} weekdates[11]`): The Origin of human life history
+
+* Boyd and Silk: Ch. 11
+
+## Week 12 (`{r} weekdates[12]`): Homo
+
+* Boyd and Silk: Ch. 12
+
+## Week 13 (`{r} weekdates[13]`): Homo sapiens and the evolution of modern human behavior
+
+* Boyd and Silk: Ch. 13
+
+## Week 14 (`{r} weekdates[14]`): Human genetic diversity
+
+* Boyd and Silk: Ch. 14
+
+## Week 15 (`{r} weekdates[15]`): Evolution and human behavior
+
+* Boyd and Silk: Ch. 15, 16
+
+## **FINAL EXAM: `r params$final`**
+
+The final consists of 50 multiple and true/false questions on material from the *entire course*.
